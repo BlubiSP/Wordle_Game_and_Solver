@@ -11,6 +11,3 @@ def valid_guess(guess, words_list = words_list):
     if guess.lower() in words_list:
         return True
     return False
-
-
-print(valid_guess("clane"))
