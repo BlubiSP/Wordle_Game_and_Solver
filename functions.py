@@ -16,7 +16,7 @@ def valid_guess(guess, words_list = words_list):
     if guess.lower() in words_list:
         return True
 
-    return False
+    print("Invalid guess. Try Again!")
 
 def solved(guess,answer):
     if guess.lower() == answer:
@@ -42,7 +42,7 @@ def evaluate(guess, answer):
                 correctPosition.append(i)
 
             else:
-                i = CorrectLetters(True)
+                i = CorrectLetters(True, i)
                 inWord.append(i)
 
     return {"correctPosition" : correctPosition, "inWord": inWord}
