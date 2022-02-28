@@ -22,7 +22,7 @@ def main():
                 for f in correctPosition:
                     print(f.letter)
         guess = ui_prompts.get_guess()
-    print("You won xD")
+    print("[102m>You WON xD[0m")
 
 
 
