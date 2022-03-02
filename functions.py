@@ -1,4 +1,5 @@
 import random
+import os
 
 
 def read_list():
@@ -27,7 +28,7 @@ def solved(guess,answer):
 def evaluate(guess, answer):
     
     class CorrectLetters:
-        def __init__(self, isinAnswer, letter=None, position=None):
+        def __init__(self, isinAnswer, letter, position=None):
             self.isinAnswer = isinAnswer
             self.letter = letter
             self.position = position
@@ -46,3 +47,27 @@ def evaluate(guess, answer):
                 inWord.append(i)
 
     return {"correctPosition" : correctPosition, "inWord": inWord}
+
+def output(display, letter, position):
+    return display[:position * 2] + letter + display[position * 2 + 1:]
+
+def create_answer_file(answer):
+    with open("answer.txt", "w") as file:
+        file.write(answer)
+
+def delete_answer_file():
+    os.remove("answer.txt")
+
+def shave():
+    #with open("answers.txt", "r") as file:
+    #    with open("answer_backup.txt", "w") as file2:
+    #        file2.write(file.read)
+
+    #fix
+    with open("answers.txt", "r+") as file:
+        wall = file.read()
+        wall = wall.split("\n")
+        fixed = [f.split()[0] for f in wall]
+        print("\n".join(fixed))
+
+shave()
