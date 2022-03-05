@@ -6,6 +6,8 @@ def main():
     import functions, get_words, ui_prompts
     answer = functions.get_answer()
     functions.create_answer_file(answer)
+    iW = "\n"
+    niW = "\n"
     output = "_ _ _ _ _"
     print("Finished Loading")
     print("Starting Game!")
@@ -15,23 +17,31 @@ def main():
         if functions.valid_guess(guess):
             correctPosition = functions.evaluate(guess, answer)["correctPosition"]
             inWord = functions.evaluate(guess, answer)["inWord"]
-
-            if len(inWord) != 0:
-                print(f"The following letters Were in the word:")
-                for f in inWord:
-                    print(f.letter)
+            notinWord = functions.evaluate(guess, answer)["notinWord"]
 
             if len(correctPosition) != 0:
-                print(f"The following letters Were in the correct Position:")
                 for f in correctPosition:
                     output = functions.output(output, f.letter, f.position)
 
+            if len(inWord) != 0:
+                list(set(inWord))
+                for f in inWord:
+                    if f.letter not in iW:
+                        iW = iW + f.letter + " "
+            
+            if len(notinWord) != 0:
+                list(set(notinWord))
+                for f in notinWord:
+                    if f not in niW:
+                        niW = niW + f + " "
+
         print(output)
+        if len(iW) > 1:
+            print(functions.output2(iW, True))
+        if len(niW) > 1:
+            print(functions.output2(niW))
         guess = ui_prompts.get_guess()
-    try:
-        functions.delete_answer_file()
-    except any:
-        pass
+    functions.delete_answer_file()
     print(f"The Word was {answer}! YOU WON")
 
 
