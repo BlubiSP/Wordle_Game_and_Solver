@@ -1,5 +1,3 @@
-### Process position of inWord
-### keep old list of wrong charakters
 import cheats
 def main():
     print("Loading...")
@@ -13,13 +11,14 @@ def main():
     print("Finished Loading")
     print("Starting Game!")
     guess = ui_prompts.get_guess()
-    while not functions.solved(guess, answer):
 
+    ### Cheats
+    #answer_list = functions.read_list("answers.txt")
+    ###
+
+    while not functions.solved(guess, answer):
         if functions.valid_guess(guess):
             inWord, correctPosition, notinWord = functions.evaluate(guess, answer).values()
-            #correctPosition = functions.evaluate(guess, answer)["correctPosition"]
-            #inWord = functions.evaluate(guess, answer)["inWord"]
-            #notinWord = functions.evaluate(guess, answer)["notinWord"]
 
             if len(correctPosition) != 0:
                 for f in correctPosition:
@@ -39,14 +38,15 @@ def main():
         print(output)
         if len(iW) > 1:
             print(functions.output2(iW, True))
+
         if len(niW) > 1:
             print(functions.output2(niW))
+
+        ### Cheats
+        #answer_list = cheats.get_list_of_possible_answers(functions.evaluate(guess, answer), answer_list)
+        #print(answer_list)
         ###
-        c["inWord"], c["correctPosition"], c["notinWord"] = functions.evaluate(guess, answer).values()
-        ###
-        # cheat list
-        print("cheat list")
-        print(cheats.get_list_of_possible_answers(functions.evaluate(guess, answer), functions.answer_list))
+
         guess = ui_prompts.get_guess()
 
     functions.delete_answer_file()

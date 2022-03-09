@@ -6,10 +6,6 @@ valid_words = functions.read_list("list.txt")
 possible_answers = functions.read_list("answers.txt")
 
 
-def get_best_starter(valid_words = valid_words, possible_answers = possible_answers):
-    for f in valid_words:
-        for i in possible_answers:
-            pass
 def get_score(guess, answer):
     inWord, correctPosition, notinWord = functions.evaluate(guess, answer).values()
 
@@ -17,22 +13,22 @@ def disgusting(ck, f, mode = "inWord"):
     new = []
     if mode == "inWord":
         try:
-            if ck[0].letter in f and ck[1].letter in f and ck[2].letter in f  and ck[3].letter in f and ck[4].letter in f:
+            if ck[0].letter in f and f[ck[0].position] != ck[0].letter and ck[1].letter in f and f[ck[1].position] != ck[1].letter and ck[2].letter in f and f[ck[2].position] != ck[2].letter  and ck[3].letter in f and f[ck[3].position] != ck[3].letter and ck[4].letter in f and f[ck[4].position] != ck[4].letter:
                 new.append(f)
         except IndexError:
             try:
-                if ck[0].letter in f and ck[1].letter in f and ck[2].letter in f  and ck[3].letter in f:
+                if ck[0].letter in f and f[ck[0].position] != ck[0].letter and ck[1].letter in f and f[ck[1].position] != ck[1].letter and ck[2].letter in f and f[ck[2].position] != ck[2].letter  and ck[3].letter in f and f[ck[3].position] != ck[3].letter:
                     new.append(f)
             except IndexError:
                 try:
-                    if ck[0].letter in f and ck[1].letter in f and ck[2].letter in f:
+                    if ck[0].letter in f and f[ck[0].position] != ck[0].letter and ck[1].letter in f and f[ck[1].position] != ck[1].letter and ck[2].letter in f and f[ck[2].position] != ck[2].letter:
                         new.append(f)
                 except IndexError:
                     try:
-                        if ck[0].letter in f and ck[1].letter in f:
+                        if ck[0].letter in f and f[ck[0].position] != ck[0].letter and ck[1].letter in f and f[ck[1].position] != ck[1].letter:
                             new.append(f)
                     except IndexError:
-                        if ck[0].letter in f:
+                        if ck[0].letter in f and f[ck[0].position] != ck[0].letter:
                             new.append(f)
     elif mode == "notinWord":
         try:
@@ -129,8 +125,26 @@ def get_list_of_possible_answers(ck, possible_answers):
         else:
             new3 = new2
 
-    return "\n".join(new3)
+    return new3
 
+"""
+class CorrectLetters:
+        def __init__(self, letter, position=None):
+            self.letter = letter
+            self.position = position
+
+q = CorrectLetters("",0)
+w = CorrectLetters("",0)
+e = CorrectLetters("e",4)
+r = CorrectLetters("r",3)
+k = CorrectLetters("k",4)
+s = CorrectLetters("s",3)
+l = CorrectLetters("l",1)
+o = CorrectLetters("o",1)
+
+a = {'inWord': [e], 'correctPosition': [o,s,e], "notinWord": ["l","r","n","y","i","t","a","h","u"]}
+print(get_list_of_possible_answers(a, possible_answers))
+"""
 
 def get_best_guess(in_, out, perfect):
     pass

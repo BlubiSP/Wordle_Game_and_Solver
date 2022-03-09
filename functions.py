@@ -1,11 +1,17 @@
 import random
 import os
+class CorrectLetters:
+        def __init__(self, letter, position=None):
+            self.letter = letter
+            self.position = position
 
-
-def read_list(filename):
-    with open(filename, "r") as file:
-        words_string = file.read()
-        words_list = words_string.split("\n")
+def read_list(input, file=True):
+    if file:
+        with open(input, "r") as file:
+            words_string = file.read()
+            words_list = words_string.split("\n")
+    else:
+        words_list = input.split("\n")
     return words_list
 
 words_list = read_list("list.txt")
@@ -28,10 +34,6 @@ def solved(guess,answer):
 
 def evaluate(guess, answer):
     
-    class CorrectLetters:
-        def __init__(self, letter, position=None):
-            self.letter = letter
-            self.position = position
 
     inWord = []
     correctPosition = []
@@ -84,3 +86,9 @@ def create_answer_file(answer):
 
 def delete_answer_file():
     os.remove("answer.txt")
+
+def conv_into_class(string):
+    stripped_list = string.replace(" ", "").split(",")
+    r = []
+    r = [CorrectLetters(f[0], int(f[1])) for f in stripped_list]
+    return r
