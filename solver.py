@@ -1,10 +1,9 @@
-# keep old input
-# fix finish
+## keep old input
 def main():
     print("Loading...")
     import cheats, functions, random
     possible_answers = functions.read_list("answers.txt")
-
+    #output = "_ _ _ _ _"
     guess = "crane"
     def get_guess():
         inWord = []
@@ -39,16 +38,16 @@ def main():
         returndic["notinWord"] = notinWord
         list_of_possible_answers = cheats.get_list_of_possible_answers(returndic, possible_answers)
         return list_of_possible_answers
-
     print("Finished Loading")
-    while isinstance(guess, str) or len(guess) != 1:
+    while len(guess) != 1:
+
         if isinstance(guess, str):
             print(f"Guess {guess}!")
         else:
+            print(guess)
             print(f"Guess {random.choice(guess)}!")
         guess = get_guess()
-    print(f"The answer is {guess}")
-    
+    print(f"The answer is {guess[0]}!")
     
 
 if __name__ == "__main__":

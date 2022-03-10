@@ -88,7 +88,8 @@ def delete_answer_file():
     os.remove("answer.txt")
 
 def conv_into_class(string):
-    stripped_list = string.replace(" ", "").split(",")
     r = []
-    r = [CorrectLetters(f[0], int(f[1])) for f in stripped_list]
+    if len(string) > 0:
+        stripped_list = string.replace(" ", "").split(",")
+        r = [CorrectLetters(f[0], int(f[1]) -1) for f in stripped_list]
     return r

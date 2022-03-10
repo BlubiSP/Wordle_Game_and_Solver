@@ -1,7 +1,7 @@
 import cheats
 def main():
     print("Loading...")
-    import functions, get_words, ui_prompts
+    import functions, get_words
     answer = functions.get_answer()
     functions.create_answer_file(answer)
     iW = "\n"
@@ -10,7 +10,7 @@ def main():
     output = "_ _ _ _ _"
     print("Finished Loading")
     print("Starting Game!")
-    guess = ui_prompts.get_guess()
+    guess = input("Enter Guess...\n")
 
     ### Cheats
     #answer_list = functions.read_list("answers.txt")
@@ -47,7 +47,7 @@ def main():
         #print(answer_list)
         ###
 
-        guess = ui_prompts.get_guess()
+        guess = input("Enter Guess...\n")
 
     functions.delete_answer_file()
     print(f"The Word was {answer}! YOU WON")
