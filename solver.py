@@ -67,6 +67,7 @@ def main():
                 quit()
                 
             else:
+                print(f"Possible Answers:\n{guess}")
                 print(f"Guess {random.choice(guess)}!")
 
         guess = get_guess()

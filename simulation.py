@@ -17,24 +17,24 @@ def main():
             possible_answers, guess = guessing(possible_answers, guess, answer)
             num_of_tries += 1 
 
-        return (num_of_tries, guess, answer)
+        return (num_of_tries, answer)
 
     total = 0
     lost = 0
     for _ in range(int(num_of_simulation)):
-        tries = game(guess, possible_answers, answer)[0]
+        # data = [number of tries, answer]
+        data = game(guess, possible_answers, answer)
         # If the programm needs more then 6 tries it will print the last guess and the answer here
         # I simulated 10k games and it could not loose
-        if tries > 6:
+        if data[0] > 6:
             lost += 1
-            print(f"guess = {tries[1]}\nAnswer = {tries[2]}")
+            print(f"Number of Guesses = {data[0]}\nAnswer = {data[1]}")
 
         else:
-            total += tries
+            total += data[0]
 
     print(f"Average guesses to win: {total / int(num_of_simulation)}\nGames lost: {lost}")
 
 
 if __name__ == "__main__":
     main()
-
