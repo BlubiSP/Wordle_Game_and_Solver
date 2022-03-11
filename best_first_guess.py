@@ -1,4 +1,3 @@
-###
 #needs threading otherwise it will take weeks to complete
 
 import cheats, functions

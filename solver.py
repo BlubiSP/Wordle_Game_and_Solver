@@ -1,5 +1,4 @@
 # It's not perfect. It does not account for duplicate letters
-# add gitignore
 def main():
     print("Loading...")
     import cheats, functions, random
