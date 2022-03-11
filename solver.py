@@ -9,11 +9,12 @@ def main():
         correctPosition = []
         notinWord = []
         returndic = {}
-
         _ = input("Press enter when you are done\n")
+
         print("Any correct Letters AND correct position? (GREEN)")
         print("Enter them in this format:")
         print("(letter position, letter position) Example: a1, p2, p3, l4, e5")
+        
         correctletterandposition = input("If there are none just press enter.\n")
         if len(correctletterandposition) > 0:
             try:
@@ -25,6 +26,7 @@ def main():
         print("Any correct Letters? (ORANGE)")
         print("Enter them in this format:")
         print("(letter position, letter position) Example: a1, p2, p3, l4, e5")
+        
         correctletter = input("If there are none just press enter.\n")
         if len(correctletter) > 0:
             try:
@@ -36,6 +38,7 @@ def main():
         print("Any incorrect Letters? (GREY)")
         print("Enter them in this format:")
         print("(letter, letter) Example: a, p, p, l, e")
+        
         incorrectLetters = input("If there are none just press enter.\n")
         if len(incorrectLetters) > 0:
             try:
@@ -43,11 +46,12 @@ def main():
 
             except ValueError:
                 print("ERROR: Invalid input\nIgnoring input.")
-
+        # converting inputs into A dictionary
         returndic["inWord"] = inWord
         returndic["correctPosition"] = correctPosition
         returndic["notinWord"] = notinWord
         list_of_possible_answers = cheats.get_list_of_possible_answers(returndic, possible_answers)
+        
         return list_of_possible_answers
 
     print("Finished Loading")
@@ -61,6 +65,7 @@ def main():
             if len(guess) == 0:
                 print("ERROR: 0 Possible answers.\nYou made a wrong input. Try again!")
                 quit()
+                
             else:
                 print(f"Guess {random.choice(guess)}!")
 

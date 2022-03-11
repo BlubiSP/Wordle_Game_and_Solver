@@ -1,7 +1,8 @@
+#Incomplete
 #needs threading otherwise it will take weeks to complete
 
 import cheats, functions
-valid_words = functions.read_list("list.txt")
+valid_words = functions.read_list("list_of_valid_guesses.txt")
 possible_answers = functions.read_list("answers.txt")
 
 def best_first_guess(valid_words = valid_words, possible_answers = possible_answers):
@@ -14,6 +15,7 @@ def best_first_guess(valid_words = valid_words, possible_answers = possible_answ
         average = total / len(possible_answers)
         if average < shortest[0]:
             shortest = [average, f]
+            
         total = 0
         print(f"{n}/{len(valid_words)}")
     print(shortest)

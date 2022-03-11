@@ -1,16 +1,15 @@
-import sys
-sys.path.append('C:/Users/stefa/Desktop/test/wordle solver/')
 import functions
 
-valid_words = functions.read_list("list.txt")
+valid_words = functions.read_list("list_of_valid_guesses.txt")
 possible_answers = functions.read_list("answers.txt")
 
-
-def get_score(guess, answer):
-    inWord, correctPosition, notinWord = functions.evaluate(guess, answer).values()
-
 def disgusting(ck, f, mode = "inWord"):
+    #ck = current_knowledge which is a list of classes or strings depending on mode
+    #f is a possible answer
+    #this basically checks every single possible answer and sees if it fits the current knowledge we have.
+    #i used short names because i had to write them alot
     new = []
+    # There is probably a way to do this way shorter/faster but i could not figure one out
     if mode == "inWord":
         try:
             if ck[0].letter in f and f[ck[0].position] != ck[0].letter and ck[1].letter in f and f[ck[1].position] != ck[1].letter and ck[2].letter in f and f[ck[2].position] != ck[2].letter  and ck[3].letter in f and f[ck[3].position] != ck[3].letter and ck[4].letter in f and f[ck[4].position] != ck[4].letter:
@@ -95,6 +94,10 @@ def disgusting(ck, f, mode = "inWord"):
     return new
 
 def get_list_of_possible_answers(ck, possible_answers):
+    # this creates a new list of possible answers with the current knowledge we have
+    #ck = current_knowledge as a dictionary with 
+    ## Example: We know the letter in the second position is "a", there is no "w" or "r" and there is an "e" somewhere but not in position 3
+    # {'inWord': [class with .letter e and .position3], 'correctPosition': [class with .letter a and .position 2], 'notinWord': ['w', "r"]}
     new = []
     new2 = []
     new3 = []
@@ -126,25 +129,3 @@ def get_list_of_possible_answers(ck, possible_answers):
             new3 = new2
 
     return new3
-
-"""
-class CorrectLetters:
-        def __init__(self, letter, position=None):
-            self.letter = letter
-            self.position = position
-
-q = CorrectLetters("",0)
-w = CorrectLetters("",0)
-e = CorrectLetters("e",4)
-r = CorrectLetters("r",3)
-k = CorrectLetters("k",4)
-s = CorrectLetters("s",3)
-l = CorrectLetters("l",1)
-o = CorrectLetters("o",1)
-
-a = {'inWord': [e], 'correctPosition': [o,s,e], "notinWord": ["l","r","n","y","i","t","a","h","u"]}
-print(get_list_of_possible_answers(a, possible_answers))
-"""
-
-def get_best_guess(in_, out, perfect):
-    pass
