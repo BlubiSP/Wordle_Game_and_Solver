@@ -1,7 +1,7 @@
 import cheats
 def main():
     print("Loading...")
-    import functions, get_words
+    import functions
     answer = functions.get_answer()
     functions.create_answer_file(answer)
     iW = "\n"

@@ -1,4 +1,5 @@
 ## keep old input
+# add gitignore
 def main():
     print("Loading...")
     import cheats, functions, random
