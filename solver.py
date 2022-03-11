@@ -1,10 +1,9 @@
-## keep old input
+# It's not perfect. It does not account for duplicate letters
 # add gitignore
 def main():
     print("Loading...")
     import cheats, functions, random
     possible_answers = functions.read_list("answers.txt")
-    #output = "_ _ _ _ _"
     guess = "crane"
     def get_guess():
         inWord = []
