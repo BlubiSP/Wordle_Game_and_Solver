@@ -7,9 +7,22 @@ class CorrectLetters:
             self.position = position
 
 def read_list(input, file=True):
+    # gets real filepath
+    real_path = os.path.realpath(__file__)
+    real_path_without_current_file = real_path[:-real_path[::-1].find("\\")]
+    #                                         (      find last "\"       )
+    #reverse slashes
+    real_path = ""
+    for s in real_path_without_current_file:
+        if s != "\\":
+            real_path += s
+
+        else:
+            real_path += "/"
+    
     #Reads text file and returns is as list
     if file:
-        with open(input, "r") as file:
+        with open(real_path + input, "r") as file:
             words_string = file.read()
             words_list = words_string.split("\n")
     else:

@@ -15,7 +15,7 @@ def main():
         print("Enter them in this format:")
         print("(letter position, letter position) Example: a1, p2, p3, l4, e5")
         
-        correctletterandposition = input("If there are none just press enter.\n")
+        correctletterandposition = input("If there are none just press enter.\n").strip(",")
         if len(correctletterandposition) > 0:
             try:
                 correctPosition = functions.conv_into_class(correctletterandposition)
@@ -27,7 +27,7 @@ def main():
         print("Enter them in this format:")
         print("(letter position, letter position) Example: a1, p2, p3, l4, e5")
         
-        correctletter = input("If there are none just press enter.\n")
+        correctletter = input("If there are none just press enter.\n").strip(",")
         if len(correctletter) > 0:
             try:
                 inWord = functions.conv_into_class(correctletter)
@@ -39,7 +39,7 @@ def main():
         print("Enter them in this format:")
         print("(letter, letter) Example: a, p, p, l, e")
         
-        incorrectLetters = input("If there are none just press enter.\n")
+        incorrectLetters = input("If there are none just press enter.\n").strip(",")
         if len(incorrectLetters) > 0:
             try:
                 notinWord = incorrectLetters.replace(" ", "").split(",")
@@ -73,7 +73,7 @@ def main():
         guess = get_guess()
     
     print(f"The answer is {guess[0]}!")
-
+    input()
 
 if __name__ == "__main__":
     main()
