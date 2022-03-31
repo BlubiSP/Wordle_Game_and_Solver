@@ -1,6 +1,11 @@
 def main():
-    import functions, random, cheats
+    import functions, random, cheats, time
     num_of_simulation = input("Enter number of simulations:\n")
+    guess = input("Enter guess ( has to be 5 letters")
+    if len(guess) != 5 or not guess.isalpha():
+        raise ValueError("Invalid guess. Exiting program")
+        time.sleep(3)
+        exit()
     possible_answers = functions.read_list("answers.txt")
     #starting guess
     guess = "crane"
