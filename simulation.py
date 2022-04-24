@@ -3,16 +3,14 @@ def main():
     import functions, random, cheats, time
 
     num_of_simulation = input("Enter number of simulations:\n")
-    guess = input("Enter guess ( has to be 5 letters)")
+    guess = input("Enter guess ( has to be 5 letters)\n")
     if len(guess) != 5 or not guess.isalpha():
         raise ValueError("Invalid guess\n")
-        time.sleep(3)
-        exit()
+
 
     possible_answers = functions.read_list("answers.txt")
     #starting guess
-    guess = "crane"
-    answer = random.choice(possible_answers)
+    
     
     def guessing(list_of_possible_answers, guess, answer):
         new_list_of_answers = cheats.get_list_of_possible_answers(functions.evaluate(guess, answer), list_of_possible_answers)
@@ -29,13 +27,16 @@ def main():
 
     total = 0
     lost = 0
+    lose_words = []
     for n in range(int(num_of_simulation)):
         # data = [number of tries, answer]
+        answer = random.choice(possible_answers)
         data = game(guess, possible_answers, answer)
-        # If the programm needs more then 6 tries it will print the last guess and the answer here
+        # Lose if you it needs more than 6 guesses
         if data[0] > 6:
             lost += 1
-            print(f"Number of Guesses = {data[0]}\nAnswer = {data[1]}")
+            print(f"LOST")
+            lose_words.append(data[1])
 
         else:
             total += data[0]
@@ -43,6 +44,10 @@ def main():
         print(f"Finished game {n} of {num_of_simulation}")
 
     print(f"Average guesses to win: {total / int(num_of_simulation)}\nGames lost: {lost}")
+    if lose_words:
+        print("\nCould not guess:")
+        for l in lose_words:
+            print(l)
     input()
 
 if __name__ == "__main__":
