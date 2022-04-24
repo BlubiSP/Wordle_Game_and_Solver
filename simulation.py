@@ -26,7 +26,7 @@ def main():
 
     total = 0
     lost = 0
-    for _ in range(int(num_of_simulation)):
+    for n in range(int(num_of_simulation)):
         # data = [number of tries, answer]
         data = game(guess, possible_answers, answer)
         # If the programm needs more then 6 tries it will print the last guess and the answer here
@@ -36,9 +36,10 @@ def main():
 
         else:
             total += data[0]
+        print(f"Finished game {n} of {num_of_simulation}")
 
     print(f"Average guesses to win: {total / int(num_of_simulation)}\nGames lost: {lost}")
-
+    input()
 
 if __name__ == "__main__":
     main()
