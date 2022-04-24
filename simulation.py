@@ -1,11 +1,14 @@
 def main():
+    
     import functions, random, cheats, time
+
     num_of_simulation = input("Enter number of simulations:\n")
     guess = input("Enter guess ( has to be 5 letters)")
     if len(guess) != 5 or not guess.isalpha():
         raise ValueError("Invalid guess\n")
         time.sleep(3)
         exit()
+
     possible_answers = functions.read_list("answers.txt")
     #starting guess
     guess = "crane"
@@ -36,6 +39,7 @@ def main():
 
         else:
             total += data[0]
+
         print(f"Finished game {n} of {num_of_simulation}")
 
     print(f"Average guesses to win: {total / int(num_of_simulation)}\nGames lost: {lost}")
