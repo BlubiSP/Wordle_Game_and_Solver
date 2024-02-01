@@ -1,6 +1,6 @@
 # A Wordle game and solver written in Python.
 I wrote all of the code without looking at any examples, so there are probably way better versions out there.
-But if you want to use the code or have any advise for me feel free to do so/reach out!
+But if you want to use the code or have any advice for me feel free to do so/reach out!
 
 # How to use
 -main.py          
